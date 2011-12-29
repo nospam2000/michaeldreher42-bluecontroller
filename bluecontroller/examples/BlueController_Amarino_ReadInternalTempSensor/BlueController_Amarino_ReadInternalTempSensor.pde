@@ -17,11 +17,14 @@
  
 #include <avr/io.h>
 #include <avr/wdt.h>
+
+// You will need the Amarino Library when you enable this #define
+//#define USE_AMARINO 1
+#ifdef USE_AMARINO
 #include <MeetAndroid.h>
+#endif
 
-#define USE_AMARINO
 #define NUMBER_OF_SAMPLES (100)
-
 
 // to make the Arduino preprocessor happy which will insert some function prototypes after this line
 void dummyForArduinoIDE();
@@ -113,7 +116,7 @@ void handleCommands(void)
       switch(ch)
       {  
         case 'y':
-          debugln_P("enter_bootloader()");
+          Serial.print("enter_bootloader()");
           enter_bootloader();
           break;
       }
